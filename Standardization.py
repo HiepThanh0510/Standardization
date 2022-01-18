@@ -25,35 +25,39 @@ data = np.array(data) #matrix data
 ###Standardization (feature normalization with zero mean and unit variance)
 final_data = data.copy()
 #x' = (x - x_average)/xichma |||| x_average = mean, xichma(standard deviation) = sqrt(full(error)^2/n)
+
 ##Standardization Column 1
 #Calculating mean
 sum = 0
 for i in range(row):
-    sum += final_data[i][0]
+    sum += data[i][0]
 mean = sum / row #x_average
 #Calculating standart deviation
 sum_error = 0
 for i in range(row):
-    sum_error += (final_data[i][0] - mean) ** 2
+    sum_error += (data[i][0] - mean) ** 2
 standard_deviation = (sum_error/row) ** (1/2)
 #Normalized value
 for i in range(row):
-   final_data[i][0] = (final_data[i][0] - mean) / standard_deviation
+   final_data[i][0] = (data[i][0] - mean) / standard_deviation
 
 ##Standardization Column 2
 #Calculating mean
 sum = 0
 for i in range(row):
-    sum += final_data[i][1]
+    sum += data[i][1]
 mean = sum / row #x_average
 #Calculating standart deviation
 sum_error = 0
 for i in range(row):
-    sum_error += (final_data[i][1] - mean) ** 2
+    sum_error += (data[i][1] - mean) ** 2
 standard_deviation = (sum_error/row) ** (1/2)
 #Normalized value
 for i in range(row):
-    final_data[i][1] = (final_data[i][1] - mean) / standard_deviation
+    final_data[i][1] = (data[i][1] - mean) / standard_deviation
+
+print('Data after standardizing:')
+print(final_data) 
 ##Draw graph
 fig, (Before_Scale, After_Scale) = plt.subplots(1, 2)
 fig.suptitle('Standardization')
